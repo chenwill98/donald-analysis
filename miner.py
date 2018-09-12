@@ -18,12 +18,11 @@ api = tweepy.API(auth)
 
 # Mines as many tweets from Donald Trump's Twitter as possible, which given the sheer frequency is only about a year's worth
 tweets = tweepy.Cursor(
-    api.user_timeline, screen_name='@realDonaldTrump', tweet_mode='extended').items()
+    api.user_timeline, screen_name='@BarackObama', tweet_mode='extended').items()
 while True:
     try:
         data = tweets.next()
     except StopIteration:
         break
-
     if data.full_text.find('RT @') == -1:
         print(json.dumps(data._json))
